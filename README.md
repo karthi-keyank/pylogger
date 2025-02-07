@@ -1,43 +1,68 @@
-# Keylogger with Client-Server Architecture
+# 🖥️ Keylogger & Screenlogger (Client-Server)
 
-This project implements a **keylogger** with a **client-server architecture**. The **server** listens for key presses on the host machine and sends the recorded keystrokes to the **client**, which logs them into a file. 
+This project consists of two tools:  
+
+- **🔑 Keylogger**: Captures keystrokes from a remote machine and logs them.  
+- **🖼️ Screenlogger**: Captures and transmits screenshots from a remote machine.  
+
+Both use a **client-server architecture** for remote monitoring.  
+
+---
 
 ## ⚠️ Disclaimer
 
-This project is intended **strictly for educational and ethical purposes**. Unauthorized keylogging is **illegal** and may violate privacy laws. **Use this project only on machines you own or have explicit permission to monitor.** The author is not responsible for any misuse.
+**This project is strictly for educational and ethical use only.** Unauthorized use for spying or stealing data is illegal and punishable by law. Ensure you have **explicit permission** before using it.  
 
 ---
 
 ## 📌 Features
 
-- **Remote Key Logging** – Captures keystrokes on the **server** and sends them to the **client**.
-- **Persistent Connection** – Reconnects automatically when the client disconnects.
-- **Logs with Timestamp** – The client appends a timestamp every 12 seconds for reference.
-- **Background Logging** – Uses **APScheduler** to log time without interrupting key capture.
-- **Handles Special Keys** – Maps keys like **Enter, Backspace, Shift, Ctrl**, etc.
+✅ **Keylogger:**  
+- Captures all keystrokes, including special keys.  
+- Saves keystrokes in `keylogs.txt` on the client side.  
+- Automatically reconnects if the client disconnects.  
+- Uses `APScheduler` to log timestamps.  
+
+✅ **Screenlogger:**  
+- Captures periodic screenshots from the remote machine.  
+- Saves screenshots in `received_screenshots/` folder.  
+- Ensures smooth transmission by handling network errors.  
+- Supports multiple client connections.  
 
 ---
 
-## 📜 How It Works
+## 📜 How It Works  
 
-### 🖥️ **Server (Keylogger)**
-1. Listens for a client connection.
-2. Captures **keystrokes** using `pynput`.
-3. Sends keystrokes to the connected client.
-4. If the client disconnects, it waits for reconnection.
+### **1️⃣ Keylogger**  
 
-### 📡 **Client (Logger)**
-1. Connects to the server.
-2. Continuously **receives keystrokes** and writes them to a file (`keylogs.txt`).
-3. Uses `APScheduler` to log the current **timestamp** every 12 seconds.
-4. Closes the connection gracefully on exit.
+#### 🖥️ **Server (Keylogger Machine)**  
+- Listens for incoming client connections.  
+- Captures and transmits keystrokes.  
+
+#### 📡 **Client (Logger Machine)**  
+- Connects to the server and receives keystrokes.  
+- Logs the data in `keylogs.txt`.  
+- Adds timestamps at regular intervals.  
 
 ---
 
-## 🛠️ Installation
+### **2️⃣ Screenlogger**  
 
-### **1️⃣ Install Dependencies**
-Ensure you have **Python 3.x** installed. Then, install the required Python modules:
+#### 🖥️ **Server (Screenshot Capturer)**  
+- Captures screenshots periodically.  
+- Sends screenshots to the connected client.  
+
+#### 📡 **Client (Screenshot Receiver)**  
+- Connects to the server and downloads images.  
+- Saves images in `received_screenshots/`.  
+
+---
+
+## 🛠️ Installation  
+
+### **1️⃣ Install Dependencies**  
+Ensure you have **Python 3.x** installed. Then install the required modules:  
+
 
 ### Third-Party Libraries  
 | Module | Version | Description |
