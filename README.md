@@ -39,9 +39,6 @@ This project is intended **strictly for educational and ethical purposes**. Unau
 ### **1️⃣ Install Dependencies**
 Ensure you have **Python 3.x** installed. Then, install the required Python modules:
 
-```sh
-pip install pynput apscheduler
-
 ### Third-Party Libraries  
 | Module | Version | Description |
 |--------|---------|-------------|
