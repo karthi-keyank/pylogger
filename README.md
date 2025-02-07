@@ -60,7 +60,7 @@ Both use a **client-server architecture** for remote monitoring.
 
 ## 🛠️ Installation  
 
-### **1️⃣ Install Dependencies**  
+### **3️⃣ Install Dependencies**  
 Ensure you have **Python 3.x** installed. Then install the required modules:  
 
 
